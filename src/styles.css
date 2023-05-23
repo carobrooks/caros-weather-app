@@ -19,7 +19,7 @@
 .example-question-2,
 .example-question-3, .example-answer-1,
 .example-answer-2,
-.example-answer-3, .prefer-celsius, .rain-temp-wind, .temp-labels, .time-labels, .day-labels, .five-day-forecast, .somewhere-else-link, button, form, .open-source   {
+.example-answer-3, .prefer-celsius, .rain-temp-wind, .temp-labels, .time-labels, .day-labels, .five-day-forecast, .somewhere-else-link, button, form, .open-source, .code-by   {
     color: #5A6275;
     font-family: 'Dosis', sans-serif;
     }
@@ -426,12 +426,15 @@ button, .input-box {
     color: #5A6275;
 }
 
-.caro-insta, .open-source {
+.open-source, .code-by {
     font-size: 24px;
 }
 
 .caro-insta {
-    font-family: 'Dosis', sans-serif;
-    color: #FFE779;
+    color: #F0903A;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Rampart One', cursive;
+    font-size: 26px;
 }
 
