@@ -1,0 +1,430 @@
+.container {
+    padding: 100px 25px 100px 25px;
+    max-width: 900px;
+}
+.card {
+    border: 4px solid #5A6275;
+    background-color: #FFF8D9;;
+}
+
+.card-body {
+    position: relative;
+}
+
+.row {
+    padding: 15px 15px 0 0;
+}
+
+.simply-put, .big-degrees, .example-question-1,
+.example-question-2,
+.example-question-3, .example-answer-1,
+.example-answer-2,
+.example-answer-3, .prefer-celsius, .rain-temp-wind, .temp-labels, .time-labels, .day-labels, .five-day-forecast, .somewhere-else-link, button, form     {
+    color: #5A6275;
+    font-family: 'Dosis', sans-serif;
+    }
+
+.day-and-city {
+    font-size: 48px;
+    font-family: 'Righteous', cursive;
+    color: #464c5b;
+    /* white-space: pre-wrap;
+    word-break: keep-all; */
+}
+
+#city {
+    font-size: 62px;
+}
+
+#current-day-time {
+    font-size: 48px;
+}
+
+@media (max-width: 968px) {
+    #city {
+        font-size: 62px;
+    }
+}
+
+@media (max-width: 768px) {
+    #city {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 568px) {
+    #city {
+        font-size: 42px;
+    }
+}
+@media (max-width: 968px) {
+    #current-day-time {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    #current-day-time {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 568px) {
+    #current-day-time {
+        font-size: 28px;
+    }
+}
+
+.simply-put {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+@media (max-width: 968px) {
+    .simply-put {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .simply-put {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 568px) {
+    .simply-put {
+        font-size: 24px;
+    }
+}
+
+.search-form {
+    display: none;
+}
+
+.somewhere-else-link {
+    font-size: 18px;
+    font-weight: 600;
+}
+.input-box {
+    font-weight: 400;
+    padding-left: 5px;
+}
+
+form {
+    margin-top: 8px;
+}
+
+button {
+    font-weight: 600;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+button, .input-box {
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.08);
+    border: solid 1px #5A6275;
+    background-color: #FFFFFF;
+    transition: border-width 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+#city-search-button:active, #city-search-button.clicked, #current-location-button:active, #current-location-button.clicked {
+    border-width: 1.5px;
+    background-color: #FFE779;
+    box-shadow:8px 8px 8px rgba(0, 0, 0, 0.2)
+}
+
+#stay-put-button:hover::before {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.big-weather-icon {
+    color: #FFE779;
+    font-size: 272px;
+}
+
+@media (max-width: 868px) {
+    .big-weather-icon {
+        font-size: 222px;
+    }
+}
+
+@media (max-width: 628px) {
+    .big-weather-icon {
+        font-size: 148px;
+    }
+}
+
+@media (max-width: 505px) {
+    .big-weather-icon {
+        font-size: 94px;
+    }
+}
+
+.big-degrees {
+    font-weight: 800;
+    font-size: 64px;
+}
+
+.example-question-1, .example-question-2, .example-question-3 {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+        .example-question-1, .example-question-2, .example-question-3, .example-answer-1, .example-answer-2, .example-answer-3 { 
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 568px) {
+    .example-question-1, .example-question-2, .example-question-3, .example-answer-1, .example-answer-2, .example-answer-3 {        
+        font-size: 20px;
+    }
+}
+
+/* @media (min-width: 972px) {
+.overlap-row {
+    margin-top: -80px;
+    }
+} */
+
+.custom-column {
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+@media screen and (min-width: 376px) {
+    .custom-column {
+        width: 50%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-column {
+        width: 50%;
+        font-size: 1rem;
+    }
+}
+
+.align-rtw-center {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.align-rtw-right {
+    display: flex;
+    justify-content: end;
+}
+
+.card .big-degrees {
+    font-size: 48px;
+}
+
+@media (max-width: 1440px) {
+    .prefer-celsius {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .prefer-celsius {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 568px) {
+    .prefer-celsius {
+        font-size: 18px;
+    }
+}
+
+.rain-temp-wind {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.rain {
+    font-size: 32px;
+}
+
+.temp, .wind {
+    font-size: 32px;
+    margin-left: 10px;
+}
+
+.temp-labels {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: -110px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    }
+
+.time-labels {
+    position: relative;
+    width: 100%;         
+    text-align: center;
+    bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.placeholder-line-graph {
+    position: relative;
+    width: 100%;
+    height: 125px;
+    margin-top: 80px;
+}
+
+.placeholder-line-graph::before {
+    content: '';
+    position: absolute;
+    top: -45px;
+    bottom: -30px;
+    left: -15px;
+    right: -15px;
+    background-color: rgba(255, 231, 121, 0.3);
+    border: 1px #ccc;
+    clip-path: polygon(0 18%,
+        50% 0,
+        100% 18%,
+        100% 100%,
+        0 100%);
+}
+
+.line-segment {
+    width: 10px;
+    background: #ccc;
+}
+
+.graph-container {
+    padding: 30px;
+    bottom: 30px;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 767px) {
+    .sm-overlap {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+.line-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.a-look-ahead {
+    color: #5A6275;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 15px 0;
+    align-items: center;
+    margin: 0px;
+    }
+
+.day-labels {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.day-icons {
+    display: flex;
+    justify-content: space-between;  
+    font-size: 48px;  
+    width: 100%;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .day-icons {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        font-size: 72px;
+    }
+}
+
+@media (min-width: 1168px) {
+    .day-icons {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        font-size: 92px;
+    }
+}
+
+@media (min-width: 768px) {
+    .day-labels {
+    padding: 0 25px 15px 25px;
+    }
+}
+
+@media (min-width: 1168px) {
+    .day-labels {
+        padding: 0 40px 15px 40px;
+        font-size: 32px;
+    }
+}
+
+.day-1 {
+    color: #5A6275;
+}
+
+.day-2 {
+    color: #FFE779;
+}
+
+.day-3{
+    color: #5A6275;
+}
+
+.day-4 {
+    color: #FFE779;
+}
+
+.day-5 {
+    color: #5A6275;
+}
+
+
+
