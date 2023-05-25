@@ -120,8 +120,14 @@ function getWeatherOfCity(cityName) {
     axios.get(apiUrl).then(showTemperature);
 }
 
+function showDefaultWeather() {
+  getWeatherOfCity("New York");
+}
+
+showDefaultWeather();
+
 function showTemperature(response) {
-    // console.log(response);
+    console.log(response);
 
     let temp = Math.round(response.data.main.temp);
     let temperature = document.querySelector("#temperature");
@@ -129,7 +135,15 @@ function showTemperature(response) {
 
     let weatherDescription = response.data.weather[0].description;
     let simplyPut = document.querySelector("#simply");
-    simplyPut.innerHTML = `simply put? ${weatherDescription}.`;
+    simplyPut.innerHTML = `simply put...${weatherDescription}.`;
+
+    setWeatherIcon(weatherDescription);
+}
+
+function setWeatherIcon(description) {
+  let iconElement = document.querySelector("big-weather-icon");
+  let formattedDescription = description.replace(/ /g, "_").toLowerCase();
+  iconElement.src = `src/icons/${formattedDescription}.svg`;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -229,6 +243,24 @@ for (let i = 1; i <= 5; i++) {
 forecastDays.forEach((day, index) => {
   day.innerHTML = daysOfWeek[nextFiveDays[index]];
 });
+
+
+
+
+
+
+
+// WEATHER ICON LEGEND! openweathermap api description = svg file
+// 'clear sky' = clear-sky-day/clear-sky-night
+// 'few clouds' = few-clouds-day/few-clouds-night
+// 'scattered clouds & broken clouds' = clouds-day/clouds-night
+// 'shower rain & rain & drizzle' = rain-day/rain-night
+// 'thunderstorm' = thunderstorm-day/thunderstorm-night
+// 'snow' = snow-day/snow-night
+// 'mist' = mist-day/mist-night
+// 'tornado' = tornado
+
+
 
 // TODO 5/12/23!!!!! 
 // 1) make sure you understand the five-day forecast code before moving on to week 5! SLASH work on understanding this over the next few weeks

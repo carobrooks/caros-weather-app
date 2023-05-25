@@ -150,7 +150,7 @@ button, .input-box {
 
 .big-weather-icon {
     color: #FFE779;
-    font-size: 272px;
+    font-size: 272px; 
 }
 
 @media (max-width: 868px) {
@@ -167,8 +167,7 @@ button, .input-box {
 
 @media (max-width: 505px) {
     .big-weather-icon {
-        font-size: 94px;
-    }
+        font-size: 94px; }
 }
 
 .big-degrees {
