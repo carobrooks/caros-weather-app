@@ -61,7 +61,7 @@ function askAndAnswer(response) {
     qAndA3: { question: "", answer: "" },
   };
 
-  if (todaysTemp >= 85) {
+  if (todaysTemp >= 78) {
     questionsAndAnswers.qAndA1.question = `so, is it a jeans-and-t-shirt kinda vibe?`;
     questionsAndAnswers.qAndA1.answer = `if by jeans you mean cut-offs and by t-shirt you mean a tank top, then it's totally a jeans-and-t-shirt kind of day. i mean, it'll be ${todaysTemp}°f, after all.`;
   } else if (todaysTemp >= 53) {
