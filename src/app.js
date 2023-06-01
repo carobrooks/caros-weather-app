@@ -82,8 +82,8 @@ function askAndAnswer(response) {
     questionsAndAnswers.qAndA2.question = `will my hair get caught in my lip gloss?`;
     questionsAndAnswers.qAndA2.answer = `as long as you're not jamming out to a head-banger, you're probably good. today's wind is blowing at ${todaysWind}mph.`;
   } else {
-    questionsAndAnswers.qAndA2.question = `should i host a candelit dinner al fresco? the wind will be at a low ${todaysWind}mph.`;
-    questionsAndAnswers.qAndA2.answer = `light the candles, bb!`;
+    questionsAndAnswers.qAndA2.question = `should i host a candelit dinner al fresco?`;
+    questionsAndAnswers.qAndA2.answer = `light the candles, bb! the wind will be at a low ${todaysWind}mph.`;
   }
 
   if (todaysHumidity >= 65) {
