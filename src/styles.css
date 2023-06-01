@@ -24,6 +24,10 @@
     font-family: 'Dosis', sans-serif;
     }
 
+.example-answer-1, .example-answer-2, .example-answer-3 {
+    display: none;
+}
+
 .day-and-city {
     font-size: 48px;
     font-family: 'Righteous', cursive;
@@ -149,31 +153,41 @@ button, .input-box {
 }
 
 .big-weather-icon {
-    color: #FFE779;
-    font-size: 272px; 
+    width: 300px;
+    height: 300px; 
 }
 
-@media (max-width: 868px) {
+@media (max-width: 1468px) {
     .big-weather-icon {
-        font-size: 222px;
+        width: 400px;
+        height: 400px;
     }
 }
 
-@media (max-width: 628px) {
+@media (max-width: 968px) {
     .big-weather-icon {
-        font-size: 148px;
+        width: 300px;
+        height: 300px;
     }
 }
 
-@media (max-width: 505px) {
+@media (max-width: 668px) {
     .big-weather-icon {
-        font-size: 94px; }
+        width: 250px;
+        height: 250px; }
+} 
+
+@media (max-width: 568px) {
+    .big-weather-icon {
+        width: 200px;
+        height: 200px;
+    }
 }
 
 .big-degrees {
     font-weight: 800;
-    font-size: 64px;
-}
+    font-size: 64px; 
+} 
 
 .example-question-1, .example-question-2, .example-question-3 {
     font-weight: 600;
