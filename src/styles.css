@@ -1,5 +1,10 @@
+body {
+    background-color: #FFF8D9;
+    margin-bottom: 100px;
+        }
+
 .container {
-    padding: 100px 25px 100px 25px;
+    padding: 100px 25px 0px 25px;
     max-width: 900px;
 }
 .card {
@@ -19,7 +24,7 @@
 .example-question-2,
 .example-question-3, .example-answer-1,
 .example-answer-2,
-.example-answer-3, .prefer-celsius, .rain-temp-wind, .temp-labels, .time-labels, .day-labels, .five-day-forecast, .somewhere-else-link, button, form, .open-source, .code-by   {
+.example-answer-3, .prefer-celsius, .rain-temp-wind, .temp-labels, .time-labels, .day-labels, .five-day-forecast, .somewhere-else-link, button, form, .open-source, .code-by  {
     color: #5A6275;
     font-family: 'Dosis', sans-serif;
     }
@@ -419,26 +424,6 @@ button, .input-box {
     }
 }
 
-.day-1 {
-    color: #5A6275;
-}
-
-.day-2 {
-    color: #FFE779;
-}
-
-.day-3{
-    color: #5A6275;
-}
-
-.day-4 {
-    color: #FFE779;
-}
-
-.day-5 {
-    color: #5A6275;
-}
-
 .open-source, .code-by {
     font-size: 24px;
 }
@@ -451,3 +436,23 @@ button, .input-box {
     font-size: 26px;
 }
 
+/* #forecast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+.forecast-day {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Dosis', sans-serif;
+}
+
+.forecast-temps {
+    font-size: 18px;
+}
+
+.forecast-min {
+    font-weight: 500;
+    opacity: .5;
+}

@@ -52,11 +52,6 @@
                 <a href="#" class="prefer-celsius" id="toggle-temp"
                   >i prefer celsius</a
                 >
-                <!-- <h2 class="rain-temp-wind">
-                  <i class="fa-solid fa-droplet rain"></i>
-                  <i class="fa-solid fa-temperature-half temp"></i>
-                  <i class="fa-solid fa-wind wind"></i>
-                </h2> -->
               </div>
             </div>
           </div>
@@ -74,7 +69,6 @@
               class="input-box"
             />
             <button id="city-search-button" type="submit">take me there</button>
-            <!-- see if you can add a hover note that signifies that this will take user to current location -->
             <button
               id="current-location-button"
               type="button"
@@ -112,63 +106,27 @@
               </div>
             </div>
           </div>
-          <!-- <div class="graph-container placeholder-line-graph sm-overlap">
-            <div class="line-container">
-              <div class="line-segment" style="height: 45%"></div>
-              <div class="line-segment" style="height: 90%"></div>
-              <div class="line-segment" style="height: 100%"></div>
-              <div class="line-segment" style="height: 69%"></div>
-              <div class="line-segment" style="height: 55%"></div>
-            </div>
-            <div class="temp-labels">
-              <span>60°F</span>
-              <span>65°F</span>
-              <span>75°F</span>
-              <span>70°F</span>
-              <span>64°F</span>
-            </div>
-            <div class="time-labels">
-              <span>8 AM</span>
-              <span>12 PM</span>
-              <span>4 PM</span>
-              <span>8 PM</span>
-              <span>12 AM</span>
-            </div>
-          </div> -->
           <h2 class="a-look-ahead">a look ahead</h2>
-          <div class="row day-container">
-            <div class="day-labels col">
-              <span>mon</span>
-              <span>tues</span>
-              <span>wed</span>
-              <span>thurs</span>
-              <span>fri</span>
-            </div>
-            <div class="day-icons col">
-              <i class="fa-regular fa-sun day-1"></i>
-              <i class="fa-regular fa-sun day-2"></i>
-              <i class="fa-solid fa-cloud-sun day-3"></i>
-              <i class="fa-solid fa-cloud day-4"></i>
-              <i class="fa-regular fa-sun day-5"></i>
-            </div>
-          </div>
+          <div class="weather-forecast" id="forecast"></div>
         </div>
       </div>
-      <a
-        href="https://github.com/carobrooks/caros-weather-app"
-        class="open-source"
-        target="_blank"
-        >open-source</a
-      >
-      <span class="code-by">code by</span>
+      <script src="src/app.js"></script>
+      <div class="open-source-by-caro">
+        <a
+          href="https://github.com/carobrooks/caros-weather-app"
+          class="open-source"
+          target="_blank"
+          >open-source</a
+        >
+        <span class="code-by">code by</span>
 
-      <a
-        href="https://www.instagram.com/ireallycaro/"
-        class="caro-insta"
-        target="_blank"
-        >CARO</a
-      >
+        <a
+          href="https://www.instagram.com/ireallycaro/"
+          class="caro-insta"
+          target="_blank"
+          >CARO</a
+        >
+      </div>
     </div>
-    <script src="src/app.js"></script>
   </body>
 </html>

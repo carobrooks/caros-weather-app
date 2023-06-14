@@ -1,12 +1,12 @@
-let daysOfWeek = [
-  "SUNDAY",
-  "MONDAY",
-  "TUESDAY",
-  "WEDNESDAY",
-  "THURSDAY",
-  "FRIDAY",
-  "SATURDAY",
-];
+// let daysOfWeek = [
+//   "SUNDAY",
+//   "MONDAY",
+//   "TUESDAY",
+//   "WEDNESDAY",
+//   "THURSDAY",
+//   "FRIDAY",
+//   "SATURDAY",
+// ];
 
 function displayTimeAndDay(timezoneOffset) {
   let currentDayTime = document.querySelector("#current-day-time");
@@ -106,6 +106,7 @@ function askAndAnswer(response) {
   answer3.innerHTML = questionsAndAnswers.qAndA3.answer;
 
   let showAnswer1 = false;
+  // this boolean variable will be used to track weather or not (lol) the answer is currently being displayed.
 
   question1.addEventListener("click", function (event) {
     console.log("Question 1 clicked");
@@ -182,38 +183,56 @@ function displayWeatherIcon(description, timeOfDay) {
   iconElement.src = `src/icons/${iconName}.svg`;
 }
 
-function displayForecastDays(currentTime, timezoneOffset) {
-  let forecastDays = document.querySelectorAll(".day-labels span");
-  let nextFiveDays = [];
-  let daysOfWeek = [
-    "SUNDAY",
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
-  ];
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["wed", "thu", "fri", "sat", "sun", "mon", "tues"];
 
-  let cityTime = new Date((currentTime + timezoneOffset) * 1000);
-
-  // i'm creating a for loop that will repeat five times for the five forecasted days. `let i = 1;` is setting up a counter to keep track of how many times the code has repeated.
-  //  `i <= 5;` is the condition for continuing the loop, so if `i` is less than or equal to 5, the code will repeat again. `i++` means we increase `i` by 1 each time we finish the loop.
-  for (let i = 1; i <= 5; i++) {
-    // this line is creating a new Date object. It's taking the date and time from `cityTime` (which is another date object), and making a new Date object with the same date and time.
-    let forecastDate = new Date(cityTime);
-    // this line is changing the day of the month of our new Date object. it's getting the current day of the month from 'cityTime`, adding `i` to it, and setting that as the new day of the month for `forecastDate`. because `i` increases by 1 each time the code repeats, this will give us the day of the month for tomorrow, the next day, and so on, up to 5 days from now.
-    forecastDate.setDate(cityTime.getDate() + i);
-    // i'm pushing the day of the week of `forecastDate` to the end of the `nextFiveDays` array. so after each loop, `nextFiveDays` gets a new item, representing the day of the week of `forecastDate`, until it eventually holds the next 5 days of the week.
-    nextFiveDays.push(forecastDate.getUTCDay());
-  }
-
-  // this is called a forEach loop - a way of repeating some code for each item in an array. here, it's repeating the code for each item in the `nextFiveDays` array and then setting the inner HTML of the `forecastDays` elements. in the code it repeats, `day` refers to the current item and `index` refers to the position of that item in the array.
-  forecastDays.forEach((day, index) => {
-    // this line changes the HTML inside each `day` element. it's setting the HTML to be a string representing the name of the day of the week. it gets this string from the `daysOfWeek` array, using the `index` position in the `nextFiveDays` array as the reference for the day of the week.
-    day.innerHTML = daysOfWeek[nextFiveDays[index]];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col-2">
+          <div class="forecast-day">${day}</div>
+          <img src="src/icons/clear-sky-day.svg" alt="clear-day" width="48" />
+          <div class="forecast-temps">
+            <span class="forecast-max">78°</span>
+            <span class="forecast-min">52°</span>
+          </div>
+        </div>
+  `;
+    }
   });
+  forecastHTML = forecastHTML + `</div`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
+
+// function displayForecastDays(currentTime, timezoneOffset) {
+//   let forecastDays = document.querySelectorAll(".day-labels span");
+//   let nextFiveDays = [];
+//   // let daysOfWeek = ["SUN", "MON", "TUES", "WED", "THU", "FRI", "SAT"];
+
+//   let cityTime = new Date((currentTime + timezoneOffset) * 1000);
+
+//   // i'm creating a for loop that will repeat five times for the five forecasted days. `let i = 1;` is setting up a counter to keep track of how many times the code has repeated.
+//   //  `i <= 5;` is the condition for continuing the loop, so if `i` is less than or equal to 5, the code will repeat again. `i++` means we increase `i` by 1 each time we finish the loop.
+//   for (let i = 1; i <= 5; i++) {
+//     // this line is creating a new Date object. It's taking the date and time from `cityTime` (which is another date object), and making a new Date object with the same date and time.
+//     let forecastDate = new Date(cityTime);
+//     // this line is changing the day of the month of our new Date object. it's getting the current day of the month from 'cityTime`, adding `i` to it, and setting that as the new day of the month for `forecastDate`. because `i` increases by 1 each time the code repeats, this will give us the day of the month for tomorrow, the next day, and so on, up to 5 days from now.
+//     forecastDate.setDate(cityTime.getDate() + i);
+//     // i'm pushing the day of the week of `forecastDate` to the end of the `nextFiveDays` array. so after each loop, `nextFiveDays` gets a new item, representing the day of the week of `forecastDate`, until it eventually holds the next 5 days of the week.
+//     nextFiveDays.push(forecastDate.getUTCDay());
+//   }
+
+//   // this is called a forEach loop - a way of repeating some code for each item in an array. here, it's repeating the code for each item in the `nextFiveDays` array and then setting the inner HTML of the `forecastDays` elements. in the code it repeats, `day` refers to the current item and `index` refers to the position of that item in the array.
+//   forecastDays.forEach((day, index) => {
+//     // this line changes the HTML inside each `day` element. it's setting the HTML to be a string representing the name of the day of the week. it gets this string from the `daysOfWeek` array, using the `index` position in the `nextFiveDays` array as the reference for the day of the week.
+//     day.innerHTML = daysOfWeek[nextFiveDays[index]];
+//   });
+// }
 
 function searchForACity(event) {
   event.preventDefault();
@@ -311,7 +330,7 @@ function showTemperature(response) {
   simplyPut.innerHTML = `simply put...${weatherDescription}.`;
 
   let timeOfDay = displayTimeAndDay(response.data.timezone);
-  displayForecastDays(response.data.dt, response.data.timezone);
+  // displayForecastDays(response.data.dt, response.data.timezone);
 
   displayWeatherIcon(response.data.weather[0].description, timeOfDay);
 
@@ -447,6 +466,7 @@ toggleTemp.addEventListener("click", function (event) {
 });
 
 // first function that runs when the page loads. it fetches and displays the weather for LA.
+displayForecast();
 getWeatherOfCity("Los Angeles");
 
 // TESTS FOR VARIOUS CONDITIONS:
