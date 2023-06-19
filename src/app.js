@@ -1,13 +1,3 @@
-// let daysOfWeek = [
-//   "SUNDAY",
-//   "MONDAY",
-//   "TUESDAY",
-//   "WEDNESDAY",
-//   "THURSDAY",
-//   "FRIDAY",
-//   "SATURDAY",
-// ];
-
 function displayTimeAndDay(timezoneOffset) {
   let currentDayTime = document.querySelector("#current-day-time");
   // this line creates a JS date object representing the current date and time.
@@ -33,7 +23,6 @@ function displayTimeAndDay(timezoneOffset) {
   let minutes = cityTime.getUTCMinutes();
   let formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-  // this line updates the HTML element selected at the beginning of the function with the day of the week and time.
   currentDayTime.innerHTML = `${dayOfWeek} ${hours}:${formattedMinutes}`;
 
   // this line uses a ternary operator to determine if it's day or night based on the current hours.
@@ -88,7 +77,7 @@ function askAndAnswer(response) {
 
   if (todaysHumidity >= 65) {
     questionsAndAnswers.qAndA3.question = `should i go for a jog today?`;
-    questionsAndAnswers.qAndA3.answer = `if you're a sucker for a steam bath, get on the starting line! otherwise, stick to indoor activities. the humidity level will be at a whopping ${todaysHumidity}%.`;
+    questionsAndAnswers.qAndA3.answer = `if you're a sucker for a steam bath, get on the starting line! the humidity level will be at a whopping ${todaysHumidity}%.`;
   } else if (todaysHumidity >= 55) {
     questionsAndAnswers.qAndA3.question = `could i hang my clothes out to dry today?`;
     questionsAndAnswers.qAndA3.answer = `if you're patient, go ahead. it might take a while with a humidity level of ${todaysHumidity}%.`;
@@ -105,71 +94,90 @@ function askAndAnswer(response) {
   answer2.innerHTML = questionsAndAnswers.qAndA2.answer;
   answer3.innerHTML = questionsAndAnswers.qAndA3.answer;
 
-  let showAnswer1 = false;
-  // this boolean variable will be used to track weather or not (lol) the answer is currently being displayed.
+  let questions = [question1, question2, question3];
+  let answers = [answer1, answer2, answer3];
 
-  question1.addEventListener("click", function (event) {
-    console.log("Question 1 clicked");
-    event.preventDefault();
+  function hideAllAnswers() {
+    answers.forEach((answer) => {
+      answer.classList.remove("active");
+    });
+  }
 
-    if (showAnswer1) {
-      answer1.style.display = "none";
-    } else {
-      answer1.style.display = "block";
-    }
-    showAnswer1 = !showAnswer1;
-    console.log("showAnswer1:", showAnswer1);
+  questions.forEach((question, index) => {
+    question.addEventListener("mouseover", function () {
+      hideAllAnswers();
+      answers[index].classList.add("active");
+    });
+
+    question.addEventListener("mouseout", function () {
+      answers[index].classList.remove("active");
+    });
   });
 
-  answer1.addEventListener("click", function (event) {
-    event.preventDefault();
-    answer1.style.display = "none";
-    showAnswer1 = false;
-  });
+  hideAllAnswers();
 
-  let showAnswer2 = false;
-
-  question2.addEventListener("click", function (event) {
-    console.log("Question 2 clicked");
-    event.preventDefault();
-
-    if (showAnswer2) {
-      answer2.style.display = "none";
-    } else {
-      answer2.style.display = "block";
-    }
-    showAnswer2 = !showAnswer2;
-    console.log("showAnswer2:", showAnswer2);
-  });
-
-  answer2.addEventListener("click", function (event) {
-    event.preventDefault();
-    answer2.style.display = "none";
-    showAnswer2 = false;
-  });
-
-  let showAnswer3 = false;
-
-  question3.addEventListener("click", function (event) {
-    console.log("Question 3 clicked");
-    event.preventDefault();
-
-    if (showAnswer3) {
-      answer3.style.display = "none";
-    } else {
-      answer3.style.display = "block";
-    }
-    showAnswer3 = !showAnswer3;
-    console.log("showAnswer3:", showAnswer3);
-  });
-
-  answer3.addEventListener("click", function (event) {
-    event.preventDefault();
-    answer3.style.display = "none";
-    showAnswer3 = false;
-  });
   return questionsAndAnswers;
 }
+
+//   let showAnswer1 = false;
+//   // this boolean variable will be used to track weather or not (lol) the answer is currently being displayed.
+
+//   question1.addEventListener("click", function (event) {
+//     event.preventDefault();
+
+//     if (showAnswer1) {
+//       answer1.style.display = "none";
+//     } else {
+//       answer1.style.display = "block";
+//     }
+//     showAnswer1 = !showAnswer1;
+//   });
+
+//   answer1.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     answer1.style.display = "none";
+//     showAnswer1 = false;
+//   });
+
+//   let showAnswer2 = false;
+
+//   question2.addEventListener("click", function (event) {
+//     event.preventDefault();
+
+//     if (showAnswer2) {
+//       answer2.style.display = "none";
+//     } else {
+//       answer2.style.display = "block";
+//     }
+//     showAnswer2 = !showAnswer2;
+//   });
+
+//   answer2.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     answer2.style.display = "none";
+//     showAnswer2 = false;
+//   });
+
+//   let showAnswer3 = false;
+
+//   question3.addEventListener("click", function (event) {
+//     event.preventDefault();
+
+//     if (showAnswer3) {
+//       answer3.style.display = "none";
+//     } else {
+//       answer3.style.display = "block";
+//     }
+//     showAnswer3 = !showAnswer3;
+//   });
+
+//   answer3.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     answer3.style.display = "none";
+//     showAnswer3 = false;
+//   });
+//   return questionsAndAnswers;
+// }
 
 function displayWeatherIcon(description, timeOfDay) {
   let iconElement = document.querySelector(".big-weather-icon");
@@ -183,56 +191,60 @@ function displayWeatherIcon(description, timeOfDay) {
   iconElement.src = `src/icons/${iconName}.svg`;
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let days = ["wed", "thu", "fri", "sat", "sun", "mon", "tues"];
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  let forecastHTML = `<div class="row">`;
-  days.forEach(function (day, index) {
-    if (index < 5) {
+  return days[day];
+}
+
+function displayForecast(response) {
+  let noonForecasts = response.data.list.filter((forecast) => {
+    return forecast.dt_txt.includes("12:00:00");
+  });
+  console.log(noonForecasts);
+
+  noonForecasts.forEach((forecast) => {
+    console.log(forecast);
+  });
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row day-container justify-content-sm-center">`;
+  noonForecasts.forEach((forecastDay, index) => {
+    if (index < 6) {
+      let iconName;
+      if (
+        typeof descriptionToIcon[forecastDay.weather[0].description] ===
+        "object"
+      ) {
+        iconName = descriptionToIcon[forecastDay.weather[0].description]["day"];
+      } else {
+        iconName = descriptionToIcon[forecastDay.weather[0].description];
+      }
+      let iconSrc = `src/icons/${iconName}.svg`;
+
       forecastHTML =
         forecastHTML +
         `
-        <div class="col-2">
-          <div class="forecast-day">${day}</div>
-          <img src="src/icons/clear-sky-day.svg" alt="clear-day" width="48" />
+        <div class="col-2 text-center">
+          <div class="forecast-day">${formatDay(forecastDay.dt)}</div>
+          <img src="${iconSrc}" alt="${
+          forecastDay.weather[0].description
+        }" width="48" />
           <div class="forecast-temps">
-            <span class="forecast-max">78°</span>
-            <span class="forecast-min">52°</span>
+            <span class="forecast-max">${Math.round(
+              forecastDay.main.temp_max
+            )}°</span>
+
           </div>
         </div>
   `;
     }
   });
-  forecastHTML = forecastHTML + `</div`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
-
-// function displayForecastDays(currentTime, timezoneOffset) {
-//   let forecastDays = document.querySelectorAll(".day-labels span");
-//   let nextFiveDays = [];
-//   // let daysOfWeek = ["SUN", "MON", "TUES", "WED", "THU", "FRI", "SAT"];
-
-//   let cityTime = new Date((currentTime + timezoneOffset) * 1000);
-
-//   // i'm creating a for loop that will repeat five times for the five forecasted days. `let i = 1;` is setting up a counter to keep track of how many times the code has repeated.
-//   //  `i <= 5;` is the condition for continuing the loop, so if `i` is less than or equal to 5, the code will repeat again. `i++` means we increase `i` by 1 each time we finish the loop.
-//   for (let i = 1; i <= 5; i++) {
-//     // this line is creating a new Date object. It's taking the date and time from `cityTime` (which is another date object), and making a new Date object with the same date and time.
-//     let forecastDate = new Date(cityTime);
-//     // this line is changing the day of the month of our new Date object. it's getting the current day of the month from 'cityTime`, adding `i` to it, and setting that as the new day of the month for `forecastDate`. because `i` increases by 1 each time the code repeats, this will give us the day of the month for tomorrow, the next day, and so on, up to 5 days from now.
-//     forecastDate.setDate(cityTime.getDate() + i);
-//     // i'm pushing the day of the week of `forecastDate` to the end of the `nextFiveDays` array. so after each loop, `nextFiveDays` gets a new item, representing the day of the week of `forecastDate`, until it eventually holds the next 5 days of the week.
-//     nextFiveDays.push(forecastDate.getUTCDay());
-//   }
-
-//   // this is called a forEach loop - a way of repeating some code for each item in an array. here, it's repeating the code for each item in the `nextFiveDays` array and then setting the inner HTML of the `forecastDays` elements. in the code it repeats, `day` refers to the current item and `index` refers to the position of that item in the array.
-//   forecastDays.forEach((day, index) => {
-//     // this line changes the HTML inside each `day` element. it's setting the HTML to be a string representing the name of the day of the week. it gets this string from the `daysOfWeek` array, using the `index` position in the `nextFiveDays` array as the reference for the day of the week.
-//     day.innerHTML = daysOfWeek[nextFiveDays[index]];
-//   });
-// }
 
 function searchForACity(event) {
   event.preventDefault();
@@ -261,39 +273,221 @@ function getWeatherOfCity(cityName) {
 
 const descriptionToColor = {
   "clear sky": {
-    day: { background: "#84AFCE", text: "#000000" },
-    night: { background: "#475E77", text: "#FFFFFF" },
+    day: {
+      body: "rgba(249, 200, 117, 0.5)",
+      background: "rgba(249, 200, 117, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(250, 176, 60, 1)",
+    },
+    night: {
+      body: "rgba(94, 104, 159, 0.45)",
+      background: "rgba(75, 90, 156, 0.68)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(75, 90, 156, 1)",
+    },
   },
   "few clouds": {
-    day: { background: "#C3C7C9", text: "#000000" },
-    night: { background: "#828589", text: "#FFFFFF" },
+    day: {
+      body: "rgba(167, 167, 167, 1)",
+      background: "rgba(217, 217, 217, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(90, 98, 117, 1)",
+    },
+    night: {
+      body: "rgba(79, 122, 156, 0.65)",
+      background: "rgba(49, 49, 89, 0.55)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(42, 66, 85, 1)",
+    },
   },
-  "scattered clouds": { background: "#828589", text: "#000000" },
-  "overcast clouds": { background: "#828589", text: "#000000" },
-  "broken clouds": { background: "#305770", text: "#000000" },
+  "scattered clouds": {
+    day: {
+      body: "rgba(167, 167, 167, 1)",
+      background: "rgba(217, 217, 217, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(90, 98, 117, 1)",
+    },
+    night: {
+      body: "rgba(79, 122, 156, 0.65)",
+      background: "rgba(79, 122, 156, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(42, 66, 85, 1)",
+    },
+  },
+  "overcast clouds": {
+    day: {
+      body: "rgba(167, 167, 167, 1)",
+      background: "rgba(217, 217, 217, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(90, 98, 117, 1)",
+    },
+    night: {
+      body: "rgba(79, 122, 156, 0.65)",
+      background: "rgba(79, 122, 156, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(42, 66, 85, 1)",
+    },
+  },
+  "broken clouds": {
+    day: {
+      body: "rgba(167, 167, 167, 1)",
+      background: "rgba(217, 217, 217, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(90, 98, 117, 1)",
+    },
+    night: {
+      body: "rgba(79, 122, 156, 0.65)",
+      background: "rgba(79, 122, 156, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(42, 66, 85, 1)",
+    },
+  },
   "light rain": {
-    day: { background: "#C3C7C9", text: "#000000" },
-    night: { background: "#305770", text: "#FFFFFF" },
+    day: {
+      body: "rgba(77, 135, 161, 0.64)",
+      background: "rgba(77, 135, 161, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(50, 87, 104, 1)",
+    },
+    night: {
+      body: "rgba(95, 111, 168, 0.45)",
+      background: "rgba(57, 57, 145, 0.33)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(57, 57, 145, 1)",
+    },
   },
   "shower rain": {
-    day: { background: "#C3C7C9", text: "#000000" },
-    night: { background: "#305770", text: "#FFFFFF" },
+    day: {
+      body: "rgba(77, 135, 161, 0.64)",
+      background: "rgba(77, 135, 161, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(50, 87, 104, 1)",
+    },
+    night: {
+      body: "rgba(95, 111, 168, 0.45)",
+      background: "rgba(57, 57, 145, 0.33)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(57, 57, 145, 1)",
+    },
   },
   "moderate rain": {
-    day: { background: "#C3C7C9", text: "#000000" },
-    night: { background: "#305770", text: "#FFFFFF" },
+    day: {
+      body: "rgba(77, 135, 161, 0.64)",
+      background: "rgba(77, 135, 161, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(50, 87, 104, 1)",
+    },
+    night: {
+      body: "rgba(95, 111, 168, 0.45)",
+      background: "rgba(57, 57, 145, 0.33)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(57, 57, 145, 1)",
+    },
   },
   rain: {
-    day: { background: "#C3C7C9", text: "#000000" },
-    night: { background: "#305770", text: "#FFFFFF" },
+    day: {
+      body: "rgba(77, 135, 161, 0.64)",
+      background: "rgba(77, 135, 161, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(50, 87, 104, 1)",
+    },
+    night: {
+      body: "rgba(95, 111, 168, 0.45)",
+      background: "rgba(57, 57, 145, 0.33)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(57, 57, 145, 1)",
+    },
   },
-  thunderstorm: { background: "#305770", text: "#000000" },
-  snow: { background: "#FFFFFF", text: "#000000" },
-  mist: { background: "#C3C7C9", text: "#000000" },
-  smoke: { background: "#C3C7C9", text: "#000000" },
-  haze: { background: "#C3C7C9", text: "#000000" },
-  fog: { background: "#C3C7C9", text: "#000000" },
-  tornado: { background: "#305770", text: "#000000" },
+  thunderstorm: {
+    day: {
+      body: "rgba(139, 143, 145, 0.42)",
+      background: "rgba(132, 132, 132, 0.56)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(132, 132, 132, 1)",
+    },
+    night: {
+      body: "rgba(54, 94, 125, 0.45)",
+      background: "rgba(54, 94, 125, 0.56)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(43, 77, 102, 1)",
+    },
+  },
+  snow: {
+    day: {
+      body: "rgba(177, 219, 252, 0.19)",
+      background: "rgba(177, 219, 252, 0.33)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(0, 90, 160, 1)",
+    },
+    night: {
+      body: "rgba(43, 126, 190, 0.65)",
+      background: "rgba(38, 124, 188, 0.85)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(19, 65, 99, 1)",
+    },
+  },
+  mist: {
+    day: {
+      body: "rgba(215, 234, 248, 0.45)",
+      background: "rgba(215, 234, 248, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(66, 100, 126, 1)",
+    },
+    night: {
+      body: "rgba(71, 81, 109, 0.45)",
+      background: "rgba(48, 58, 89, 0.65)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(48, 58, 89, 1)",
+    },
+  },
+  smoke: {
+    day: {
+      body: "rgba(215, 234, 248, 0.45)",
+      background: "rgba(215, 234, 248, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(66, 100, 126, 1)",
+    },
+    night: {
+      body: "rgba(71, 81, 109, 0.45)",
+      background: "rgba(48, 58, 89, 0.65)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(48, 58, 89, 1)",
+    },
+  },
+  haze: {
+    day: {
+      body: "rgba(215, 234, 248, 0.45)",
+      background: "rgba(215, 234, 248, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(66, 100, 126, 1)",
+    },
+    night: {
+      body: "rgba(71, 81, 109, 0.45)",
+      background: "rgba(48, 58, 89, 0.65)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(48, 58, 89, 1)",
+    },
+  },
+  fog: {
+    day: {
+      body: "rgba(215, 234, 248, 0.45)",
+      background: "rgba(215, 234, 248, 1)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(66, 100, 126, 1)",
+    },
+    night: {
+      body: "rgba(71, 81, 109, 0.45)",
+      background: "rgba(48, 58, 89, 0.65)",
+      text: "rgba(0, 0, 0, 1)",
+      border: "rgba(48, 58, 89, 1)",
+    },
+  },
+  tornado: {
+    body: "rgba(145, 180, 200, 0.45)",
+    background: "rgba(132, 171, 193, 0.65)",
+    text: "rgba(0, 0, 0, 1)",
+    border: "rgba(92, 124, 141, 1)",
+  },
 };
 
 const descriptionToIcon = {
@@ -316,6 +510,14 @@ const descriptionToIcon = {
   tornado: "tornado",
 };
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 // this function calls `displayTimeAndDay(response.data.timezone)`, displayForecastDays(response.data.dt, response.data.timezone)`, and `displayWeatherIcon(resopnse.data.weather[0].description, timeOfDay)`.
 // where the weather data is displayed, and the time and day are updated.
 function showTemperature(response) {
@@ -330,11 +532,12 @@ function showTemperature(response) {
   simplyPut.innerHTML = `simply put...${weatherDescription}.`;
 
   let timeOfDay = displayTimeAndDay(response.data.timezone);
-  // displayForecastDays(response.data.dt, response.data.timezone);
 
   displayWeatherIcon(response.data.weather[0].description, timeOfDay);
 
   askAndAnswer(response);
+
+  getForecast(response.data.coord);
 
   let colors;
   if (typeof descriptionToColor[weatherDescription] === "object") {
@@ -351,7 +554,11 @@ function showTemperature(response) {
   }
   let card = document.querySelector(".card");
   card.style.backgroundColor = colors.background;
+  card.style.borderColor = colors.border;
   card.style.color = colors.text;
+
+  let body = document.querySelector("body");
+  body.style.backgroundColor = colors.body;
 
   let colorClasses = [
     ".day-and-city",
@@ -412,7 +619,6 @@ searchLink.addEventListener("click", function (event) {
   hideForm = !hideForm;
 });
 
-// ---------------------------------------------------------------------------------------------------
 // this function gets the current position of the user using the Geolocation API, fetches the weather data for the current location, and then calls `showTemperature(response)` to display the weather.
 function getPosition(response) {
   console.log(response);
@@ -441,8 +647,6 @@ function getPosition(response) {
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getPosition);
 
-// ------------------------------------------------------------------------------------------------------
-
 let temperature = document.querySelector("#temperature");
 let toggleTemp = document.querySelector("#toggle-temp");
 let isFahrenheit = true;
@@ -465,8 +669,6 @@ toggleTemp.addEventListener("click", function (event) {
   isFahrenheit = !isFahrenheit;
 });
 
-// first function that runs when the page loads. it fetches and displays the weather for LA.
-displayForecast();
 getWeatherOfCity("Los Angeles");
 
 // TESTS FOR VARIOUS CONDITIONS:

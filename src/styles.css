@@ -1,5 +1,4 @@
 body {
-    background-color: #FFF8D9;
     margin-bottom: 100px;
         }
 
@@ -29,8 +28,20 @@ body {
     font-family: 'Dosis', sans-serif;
     }
 
-.example-answer-1, .example-answer-2, .example-answer-3 {
-    display: none;
+
+
+#example-a-1,
+#example-a-2,
+#example-a-3 {
+    transition: max-height 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#example-a-1.active,
+#example-a-2.active,
+#example-a-3.active {
+    max-height: 100vh;
 }
 
 .day-and-city {
@@ -368,12 +379,11 @@ button, .input-box {
 
 .day-container {
     display: flex;
-    flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: 0 0 15px 0;
-    align-items: center;
+    padding: 0px;
     margin: 0px;
+    align-items: space-between;
     }
 
 .day-labels {
@@ -429,18 +439,16 @@ button, .input-box {
 }
 
 .caro-insta {
-    color: #F0903A;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
     font-family: 'Rampart One', cursive;
     font-size: 26px;
 }
 
-/* #forecast {
-    display: flex;
-    justify-content: space-between;
+#forecast {
     align-items: center;
-} */
+}
 
 .forecast-day {
     font-size: 18px;
