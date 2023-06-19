@@ -40,6 +40,8 @@ function askAndAnswer(response) {
   let answer2 = document.querySelector("#example-a-2");
   let answer3 = document.querySelector("#example-a-3");
 
+  let container = document.querySelector("#example-answer-container");
+
   let todaysTemp = Math.round(response.data.main.temp);
   let todaysWind = Math.round(response.data.wind.speed);
   let todaysHumidity = Math.round(response.data.main.humidity);
@@ -103,18 +105,22 @@ function askAndAnswer(response) {
     });
   }
 
+  let setActive = throttle((index) => {
+    answers[index].classList.add("active");
+    container.classList.add("active");
+  }, 200);
+
   questions.forEach((question, index) => {
     question.addEventListener("mouseover", function () {
       hideAllAnswers();
-      answers[index].classList.add("active");
+      setActive(index);
     });
 
     question.addEventListener("mouseout", function () {
       answers[index].classList.remove("active");
+      container.classList.remove("active");
     });
   });
-
-  hideAllAnswers();
 
   return questionsAndAnswers;
 }
@@ -671,6 +677,24 @@ toggleTemp.addEventListener("click", function (event) {
 
   isFahrenheit = !isFahrenheit;
 });
+
+function throttle(func, wait) {
+  let timeout = null;
+  let callbackArgs = null;
+
+  return function (...args) {
+    const context = this; // Store the context
+    callbackArgs = args; // Store the arguments
+
+    if (!timeout) {
+      // If no timeout is set
+      timeout = setTimeout(() => {
+        func.apply(context, callbackArgs); // Call the function with the last provided arguments
+        timeout = null; // Reset the timeout
+      }, wait);
+    }
+  };
+}
 
 getWeatherOfCity("Los Angeles");
 

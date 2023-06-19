@@ -20,6 +20,19 @@ body {
     padding: 15px 15px 0 0;
 }
 
+#example-answer-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: ease-in-out all 300ms;
+}
+
+#example-answer-container.active {
+    opacity: 1;
+}
+
 .simply-put, .big-degrees, .example-question-1,
 .example-question-2,
 .example-question-3, .example-answer-1,
@@ -34,15 +47,18 @@ body {
 #example-a-1,
 #example-a-2,
 #example-a-3 {
-    transition: max-height 0.3s ease-in-out;
     max-height: 0;
     overflow: hidden;
+    opacity: 0;
+    transition: ease-in all 200ms;
 }
 
 #example-a-1.active,
 #example-a-2.active,
 #example-a-3.active {
     max-height: 100vh;
+    opacity: 1;
+    transform: translateY(20px);
 }
 
 .day-and-city {
@@ -169,35 +185,41 @@ button, .input-box {
     white-space: nowrap;
 }
 
-.big-weather-icon {
-    width: 300px;
-    height: 300px; 
+.big-weather-icon-container {
     position: absolute;
     z-index: -10;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+}
+
+.big-weather-icon {
+    width: 100%;
 }
 
 @media (max-width: 1468px) {
-    .big-weather-icon {
+    .big-weather-icon-container {
         width: 400px;
         height: 400px;
     }
 }
 
 @media (max-width: 968px) {
-    .big-weather-icon {
+    .big-weather-icon-container {
         width: 300px;
         height: 300px;
     }
 }
 
 @media (max-width: 668px) {
-    .big-weather-icon {
+    .big-weather-icon-container {
         width: 250px;
         height: 250px; }
 } 
 
 @media (max-width: 568px) {
-    .big-weather-icon {
+    .big-weather-icon-container {
         width: 200px;
         height: 200px;
     }
