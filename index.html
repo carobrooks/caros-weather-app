@@ -24,35 +24,38 @@
     ></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
-  <body>
+  <!--
+    Setting body to display: none to avoid a glitchy loading state.
+    The linked JavaScript file will set this style to display: block once
+    data loading is complete.  
+  -->
+  <body style="display: none">
     <div class="container">
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-6">
+            <div class="col-9">
               <h1 class="day-and-city" id="day-time-city">
-                <span id="city">LOS ANGELES</span>
-                <span id="current-day-time">WEDNESDAY 4:00</span>
+                <div id="city">LOS ANGELES</div>
+                <div id="current-day-time">WEDNESDAY 4:00</div>
               </h1>
               <h2 class="simply-put" id="simply">
                 simply put, it's a sunny day
               </h2>
             </div>
-            <div class="col-2">
-              <img
-                class="big-weather-icon"
-                id="weather-icon"
-                src="src/icons/clear-sky-day.svg"
-                alt="weather icon"
-              />
-            </div>
-            <div class="col-4 align-rtw-right">
+            <div class="col-3 align-rtw-right">
               <div class="align-rtw-center">
                 <h1 class="big-degrees" id="temperature">76°f</h1>
                 <a href="#" class="prefer-celsius" id="toggle-temp"
                   >i prefer celsius</a
                 >
               </div>
+              <img
+                class="big-weather-icon"
+                id="weather-icon"
+                src="src/icons/clear-sky-day.svg"
+                alt="weather icon"
+              />
             </div>
           </div>
           <a href="#" class="somewhere-else-link" id="to-search-or-not"

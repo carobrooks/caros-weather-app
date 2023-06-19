@@ -210,7 +210,7 @@ function displayForecast(response) {
   });
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row day-container justify-content-sm-center">`;
+  let forecastHTML = `<div class="row day-container justify-content-center">`;
   noonForecasts.forEach((forecastDay, index) => {
     if (index < 6) {
       let iconName;
@@ -268,7 +268,10 @@ function getWeatherOfCity(cityName) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiUrl = `${apiEndpoint}?q=${cityName}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(showTemperature);
+  axios.get(apiUrl).then((response) => {
+    document.body.style.display = "block";
+    showTemperature(response);
+  });
 }
 
 const descriptionToColor = {
