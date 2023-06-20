@@ -506,6 +506,7 @@ const descriptionToIcon = {
   "overcast clouds": { day: "clouds-day", night: "clouds-night" },
   "broken clouds": { day: "clouds-day", night: "clouds-night" },
   "shower rain": { day: "rain-day", night: "rain-night" },
+  "heavy intensity rain": { day: "rain-day", night: "rain-night" },
   "light rain": { day: "rain-day", night: "rain-night" },
   "moderate rain": { day: "rain-day", night: "rain-night" },
   rain: { day: "rain-day", night: "rain-night" },
