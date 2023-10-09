@@ -125,66 +125,6 @@ function askAndAnswer(response) {
   return questionsAndAnswers;
 }
 
-//   let showAnswer1 = false;
-//   // this boolean variable will be used to track weather or not (lol) the answer is currently being displayed.
-
-//   question1.addEventListener("click", function (event) {
-//     event.preventDefault();
-
-//     if (showAnswer1) {
-//       answer1.style.display = "none";
-//     } else {
-//       answer1.style.display = "block";
-//     }
-//     showAnswer1 = !showAnswer1;
-//   });
-
-//   answer1.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     answer1.style.display = "none";
-//     showAnswer1 = false;
-//   });
-
-//   let showAnswer2 = false;
-
-//   question2.addEventListener("click", function (event) {
-//     event.preventDefault();
-
-//     if (showAnswer2) {
-//       answer2.style.display = "none";
-//     } else {
-//       answer2.style.display = "block";
-//     }
-//     showAnswer2 = !showAnswer2;
-//   });
-
-//   answer2.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     answer2.style.display = "none";
-//     showAnswer2 = false;
-//   });
-
-//   let showAnswer3 = false;
-
-//   question3.addEventListener("click", function (event) {
-//     event.preventDefault();
-
-//     if (showAnswer3) {
-//       answer3.style.display = "none";
-//     } else {
-//       answer3.style.display = "block";
-//     }
-//     showAnswer3 = !showAnswer3;
-//   });
-
-//   answer3.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     answer3.style.display = "none";
-//     showAnswer3 = false;
-//   });
-//   return questionsAndAnswers;
-// }
-
 function displayWeatherIcon(description, timeOfDay) {
   let iconElement = document.querySelector(".big-weather-icon");
 
